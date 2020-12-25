@@ -24,3 +24,7 @@ print('时间偏移')
 print("day+1")
 print(datetime.today() - timedelta(days=1))
 print(datetime.today() + timedelta(days=-1))
+
+
+a = time.ctime()
+print(a)
