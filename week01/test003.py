@@ -14,14 +14,15 @@ def daemonize(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
     try:
         # 创建子进程
         pid = os.fork()
+        print('fork#1 的 pid is:{}'.format(os.getpid()))
         if pid > 0:
             # 父进程先与子进程exit，会使子进程变为孤儿进程
             # 这样子进程呗init这个用户级守护进程手痒
             sys.exit(0)  # 0表示正常退出
-
     except OSError as err:
         sys.stderr.write('_Fork #1 faild: {0}\n'.format(err))
         sys.exit(1) # 1表示非期望的退出
+    os.system('ps -ef|grep test003.py')
 
     # 从父进程环境脱离
     # decouple from parent environment
@@ -32,15 +33,17 @@ def daemonize(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
     # setid调用成功后，进程成为新的会话组长和新的进程租场，并与原来的登录会话和进程组脱离
     os.setsid()
 
-    # 第二次fork
+    #第二次fork
     try:
         pid = os.fork()
+        print('fork#2  的 pid is:{}'.format(os.getpid()))
         if pid >0:
             # 第二个父进程退出
             sys.exit(0)
     except OSError as err:
         sys.stderr.write('_Fork #2 faild: {0}\n'.format(err))
         sys.exit(1)
+    os.system('ps -ef|grep test003.py')
 
     # 重定向标准文件描述符
     sys.stdout.flush()
@@ -53,7 +56,6 @@ def daemonize(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
     os.dup2(si.fileno(), sys.stdin.fileno())
     os.dup2(so.fileno(), sys.stdout.fileno())
     os.dup2(se.fileno(), sys.stderr.fileno())
-
 
 # 每秒显示一个时间戳
 def test():
@@ -71,3 +73,5 @@ if __name__ == "__main__":
     daemonize('/dev/null','/opt/geektime_code/week01/d1.log','/dev/null')
     print('daemonize end')
     test()
+
+time.sleep(20)
