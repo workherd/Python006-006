@@ -75,3 +75,25 @@ if __name__ == "__main__":
     test()
 
 time.sleep(20)
+
+
+"""
+验证结果
+(geektime01) [root@linux-node33 /opt/geektime_code/week01]# python3 test003.py 
+fork#1 的 pid is:20558
+fork#1 的 pid is:20559
+root      20559      1  0 11:46 pts/0    00:00:00 python3 test003.py
+root      20563  20559  0 11:46 pts/0    00:00:00 sh -c ps -ef|grep test003.py
+root      20566  20563  0 11:46 pts/0    00:00:00 sh -c ps -ef|grep test003.py
+fork#2  的 pid is:20559
+fork#2  的 pid is:20568
+root      20568      1  0 11:46 ?        00:00:00 python3 test003.py
+root      20570  20568  0 11:46 ?        00:00:00 sh -c ps -ef|grep test003.py
+root      20573  20570  0 11:46 ?        00:00:00 sh -c ps -ef|grep test003.py
+(geektime01) [root@linux-node33 /opt/geektime_code/week01]# ps -ef|grep test003.py 
+root      20568      1  0 11:46 ?        00:00:00 python3 test003.py
+root      20584  18763  0 11:46 pts/0    00:00:00 grep --color=auto test003.py
+(geektime01) [root@linux-node33 /opt/geektime_code/week01]# 
+
+
+"""
