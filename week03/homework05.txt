@@ -1,0 +1,39 @@
+
+# 添加索引前的执行效率分析
+
+explain  SELECT
+	a.id as 'a_id',
+	a.`name` as 'a_name',
+	b.id as 'b_name',
+	b.`name` as 'b_name'
+FROM
+	table1 a
+RIGHT JOIN  table2 b ON a.id = b.id
+
+
+执行效率分析结果
+1	SIMPLE	b	ALL					2
+1	SIMPLE	a	ALL					2	Using where; Using join buffer (Block Nested Loop)
+
+
+# 添加索引
+参考文章：https://dev.mysql.com/doc/refman/5.6/en/create-index.html
+CREATE  INDEX idx_id on table1(id);
+CREATE  INDEX idx_id on table2(id);
+CREATE INDEX idx_name on table1(NAME);
+CREATE INDEX idx_name on table2(NAME);
+
+
+
+
+# 相同语句重新进行执行效率分析结果
+
+1	SIMPLE	b	ALL					2
+1	SIMPLE	a	ALL	idx_id				2	Using where; Using join buffer (Block Nested Loop)
+
+# 分析
+此sql语句的字典表为table1，执行结果看，右链接用到了table1的id列索引，其他表和列的索引均为用到。基表由于均要显示,此时，数据均需要显示，索引就没有用处了。
+结论： 只有在被筛选列加入索引列才有效果
+
+参考的官网
+https://dev.mysql.com/doc/refman/5.6/en/explain-output.html#explain-join-types

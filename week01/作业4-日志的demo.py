@@ -21,5 +21,4 @@ def loger():
         print(i)
         logging.info('This is {}!'.format(i))
 
-
 loger()

@@ -1,0 +1,43 @@
+#1 inner join
+SELECT
+	a.id as 'a_id',
+	a.`name` as 'a_name',
+	b.id as 'b_name',
+	b.`name` as 'b_name'
+FROM
+	table1 a
+INNER JOIN table2 b ON a.id = b.id
+
+执行结果
+1	table1_table2	1	table1_table2
+
+
+
+#2 left join
+SELECT
+	a.id as 'a_id',
+	a.`name` as 'a_name',
+	b.id as 'b_name',
+	b.`name` as 'b_name'
+FROM
+	table1 a
+LEFT JOIN table2 b ON a.id = b.id
+
+执行结果
+1	table1_table2	1	table1_table2
+2	table1
+
+
+#3 right join
+SELECT
+	a.id as 'a_id',
+	a.`name` as 'a_name',
+	b.id as 'b_name',
+	b.`name` as 'b_name'
+FROM
+	table1 a
+RIGHT JOIN  table2 b ON a.id = b.id
+
+# 执行结果
+1	table1_table2	1	table1_table2
+            		3	table2
