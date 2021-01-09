@@ -10,7 +10,6 @@ from sqlalchemy import DateTime
 import sys
 import os
 
-
 Base = declarative_base()
 
 class Users_table(Base):
@@ -33,8 +32,6 @@ class Finance_transfer_detail_table(Base):
     user_to = Column(Integer, ForeignKey(Users_table.id), comment='收款人')
     money = Column(DECIMAL(precision=9, scale=2), nullable=False, comment='转账金额')
     created_on = Column(DateTime(), default=datetime.now)
-
-
 
 # 实例化一个引擎
 dburl = "mysql+pymysql://geektimedev:geektimedev01!@192.168.56.33:3306/testdb?charset=utf8"
@@ -66,10 +63,7 @@ except Exception as e:
 # objs = session.execute(sql)
 # session.commit()
 
-
-
 # 转账
-
 source_user = '张三'
 destination_user = '李四'
 trans_money = 100
@@ -107,16 +101,13 @@ finally:
     connection.close()
 print('this is the end')
 
-
 #
 # print(type(objs))
 # print(objs)
 # for i in objs:
 #     print(i)
 
-
 """
-
 
 connection = engine.connect(close_with_result=True)
 trans = connection.begin()
