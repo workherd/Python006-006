@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BooksList</title>
+</head>
+<body>
+
+{% for book in n %}
+    <div>
+        bookname: {{ book.name }} <br>
+        author: {{ book.author }} <br>
+        stars：{{ book.stars }}
+    </div>
+{% endfor %}
+
+
+</body>
+</html>
