@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import urllib
+import time
+#
+# start_time = time.time()
+# time.sleep(2)
+# print(time.time() - start_time)
 
-a = '你好'
-def my_urlencode(str):
-    reprStr = repr(str).replace(r'\x', '%')
-    return reprStr[1:-1]
 
+def func(name: str):
+    print('函数收到变量的类型', type(name))
+    print(name)
 
-print( my_urlencode('你好'))
+a = 122
+print('a的类型为',type(a))
+func(a)
 
-print(urllib.parse.urlencode(a))
 
