@@ -51,6 +51,7 @@ add_1 = functools.partial(add, 1)
 a = add_1(10)
 print(a)
 
+
 import itertools
 g = itertools.count()
 a = next(g)
