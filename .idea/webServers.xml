@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="63529772-b919-4758-9504-ea5c2a6ba7d0" name="dev_56_33">
+        <fileTransfer rootFolder="/opt/geektime_code" accessType="SFTP" host="192.168.56.33" port="22" sshConfigId="100949c6-5e55-4331-8589-00eb9ee327fd" sshConfig="root@192.168.56.33:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
