@@ -64,4 +64,3 @@ if __name__ == '__main__':
     st = time.time()
     multicore()
     print('multicore time:', time.time()-st)
-
