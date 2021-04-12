@@ -25,5 +25,30 @@ print(pd.merge(table1, table2, how='outer'))
 
 9. DELETE FROM table1 WHERE id=10;
 print(df.drop(df[df['id']==10].index, axis=0))
+
 10. ALTER TABLE table1 DROP COLUMN column_name;
 print(df.drop(['column_name'], axis=1))
+
+11. select a.sex, a.tip
+from tips_tb a
+where (
+	select count(*)
+	from tips_tb b
+	where b.sex = a.sex and b.tip > a.tip
+) < 2
+order by a.sex, a.tip desc;
+
+# 1.
+df.assign(rn=df.sort_values(['total_bill'], ascending=False)
+          .groupby('sex')
+          .cumcount()+1)\
+    .query('rn < 3')\
+    .sort_values(['sex', 'rn'])
+
+# 2.
+df.assign(rn=df.groupby('sex')['total_bill']
+          .rank(method='first', ascending=False)) \
+    .query('rn < 3') \
+    .sort_values(['sex', 'rn'])
+
+12.
