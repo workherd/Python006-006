@@ -3,11 +3,11 @@
 # @Time       : 2021/3/13 7:18
 # @Author     : john
 # @File       : homework_teacher.py
-"""
+
 class 动物(object):
-    "
+    """
     不允许被实例化（abs）
-    "
+    """
 
     def __init__(self, 类型, 体型, 性格):
         self.__类型 = 类型
@@ -23,7 +23,7 @@ class 动物(object):
         return self.__体型
 
     @property
-    def 性格
+    def 性格(self):
         return self.__类型
 
     @staticmethod
@@ -39,7 +39,7 @@ class Cat(动物):
 
     适合当宠物 = True
 
-    def __init__(self, name, 类型, 体型, 性格)
+    def __init__(self, name, 类型, 体型, 性格):
         super().__init__(类型, 体型, 性格)
         self.__name = name
 
@@ -68,7 +68,12 @@ class Zoo(object):
 
 
 if __name__ == '__main__':
-    z = Zoo()
+    z = Zoo('时间动物园')
+
+    cat1 = Cat('大花猫1', '食肉', '小', '温顺')
+
+    z.add_animal(cat1)
+
     have_cat = getattr(z, 'Cat')
 
-"""
+

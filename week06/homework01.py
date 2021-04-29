@@ -30,7 +30,7 @@ class Animal(object):
         self.animal_type = animal_type   # 类型
         self.shape = shape  # 体型
         self.character = character  # 性格
-        if self.animal_type == '食肉' and ( self.shape == '中' or self.shape == '大') and self.character == '性格凶猛':
+        if self.animal_type == '食肉' and (self.shape == '中' or self.shape == '大') and self.character == '性格凶猛':
             self.isferocious = True
         else:
             self.isferocious = False

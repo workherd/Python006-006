@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @Time       : 2021/2/27 9:42
+# @Author     : john
+# @File       : permissions.py
+
+from rest_framework import permissions
+
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        # 读取权限允许任何请求，
+        # 所以我们总是允许GET，HEAD或OPTIONS请求。
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # 只有该微博的所有者才允许写权限。
+        return obj.author_id == request.user
