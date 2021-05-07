@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.sqlite3
+week03/
+week04/
+week05/
+week06/
