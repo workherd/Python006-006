@@ -16,6 +16,6 @@ class Human2(object):
 
 
 h1 = Human2()
-
 print(h1.age)
-print(h1.noattr)
+# print(h1.noattr)
+print('end')

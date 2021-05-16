@@ -9,13 +9,10 @@ class Human2(object):
     def __init__(self):
         self.age = 18
 
-    def __getattribute__(self, item):
-        print(f'__getattribute___ call item:{item}')
-
 
 h1 = Human2()
 #
-print(h1.age)
-print(h1.noattr)
+print(h1.__getattribute__('age'))
+# print(h1.noattr)
 
 print('end')

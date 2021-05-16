@@ -15,7 +15,8 @@ class Human2(object):
             return super().__getattribute__(item)  # supper表示当前类的父类
         except Exception as e:
             self.__dict__[item] = 100  # 捕获异常并赋予默认值
-            return 100
+            # return 100
+            return super().__getattribute__(item)
 
 
 h1 = Human2()
